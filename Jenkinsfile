@@ -12,18 +12,13 @@ pipeline {
         APP_NAME = "MyApp"
     }
 
-    // 🛠 Tools (check name in Manage Jenkins → Tools)
-    tools {
-        maven 'Maven'
-    }
-
     stages {
 
         // 🏗 Build Stage
         stage('Build') {
             steps {
-                echo "Building %APP_NAME% Version %VERSION%"
-                bat 'mvn -v'
+                echo "Building ${env.APP_NAME} Version ${params.VERSION}"
+                bat 'echo Build completed'
             }
         }
 
@@ -41,7 +36,7 @@ pipeline {
         // 🚀 Deploy Stage
         stage('Deploy') {
             steps {
-                echo "Deploying %APP_NAME%..."
+                echo "Deploying ${env.APP_NAME}..."
                 bat 'echo Deployment done'
             }
         }
